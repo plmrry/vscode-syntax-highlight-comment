@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./ts-out",
+    "declarationMap": true,
+    "isolatedModules": true,
+    "lib": ["esnext"],
+    "module": "nodenext",
+    "outDir": "./ts-out",
+    "rootDir": "./src",
+    "skipLibCheck": true,
+    "sourceMap": false,
+    "strict": false,
+    "target": "esnext",
+    "types": ["node"],
+    "verbatimModuleSyntax": false
+  }
+}

@@ -9,7 +9,7 @@ const MARKER_ALIASES = new Map<string, SupportedMarker>([
   ["shellscript", "shell"],
   ["sh", "shell"],
   ["bash", "shell"],
-  ["zsh", "shell"]
+  ["zsh", "shell"],
 ]);
 
 export const SUPPORTED_MARKER_LIST = SUPPORTED_MARKERS.join(", ");

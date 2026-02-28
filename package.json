@@ -1,75 +1,104 @@
 {
-	"name": "vscode-syntax-highlight-comment",
-	"displayName": "Syntax Highlight Comment",
-	"description": "Enable CSS/HTML/shell highlighting in JS/TS template literals using comment markers like /** css */.",
-	"version": "0.1.0",
-	"author": "paul-murray",
-	"publisher": "paul-murray",
-	"license": "CC0-1.0",
-	"type": "module",
-	"engines": {
-		"vscode": "^1.95.0"
-	},
-	"categories": [
-		"Programming Languages"
-	],
-	"keywords": [
-		"vscode",
-		"template literal",
-		"javascript",
-		"typescript",
-		"syntax highlighting",
-		"css",
-		"html",
-		"shell"
-	],
-	"main": "./dist/extension.js",
-	"activationEvents": [
-		"onLanguage:javascript",
-		"onLanguage:javascriptreact",
-		"onLanguage:typescript",
-		"onLanguage:typescriptreact"
-	],
-	"contributes": {
-		"commands": [
-			{
-				"command": "syntaxHighlightComment.showSupportedMarkers",
-				"title": "Syntax Highlight Comment: Show Supported Markers"
-			}
-		],
-		"grammars": [
-			{
-				"scopeName": "syntax-highlight-comment.injection",
-				"path": "./syntaxes/syntax-highlight-comment.tmLanguage.json",
-				"injectTo": [
-					"source.js",
-					"source.js.jsx",
-					"source.ts",
-					"source.tsx"
-				],
-				"embeddedLanguages": {
-					"meta.embedded.block.syntax-highlight-comment.css": "css",
-					"meta.embedded.block.syntax-highlight-comment.html": "html",
-					"meta.embedded.block.syntax-highlight-comment.shell": "shellscript"
-				},
-				"tokenTypes": {
-					"meta.embedded.block.syntax-highlight-comment.css": "other",
-					"meta.embedded.block.syntax-highlight-comment.html": "other",
-					"meta.embedded.block.syntax-highlight-comment.shell": "other"
-				}
-			}
-		]
-	},
-	"scripts": {
-		"build:grammar": "node ./scripts/build-grammar.mjs",
-		"compile": "tsc -p ./tsconfig.json",
-		"build": "pnpm run build:grammar && pnpm run compile",
-		"watch": "tsc -w -p ./tsconfig.json",
-		"vscode:prepublish": "pnpm run build"
-	},
-	"devDependencies": {
-		"@types/node": "^22.13.10",
-		"@types/vscode": "^1.95.0",
-		"typescript": "^5.8.2"
-	}
+  "name": "vscode-syntax-highlight-comment",
+  "displayName": "Syntax Highlight Comment",
+  "version": "2026.2.280053",
+  "description": "Enable syntax highlighting in JS/TS template literals using comment markers like /** css */.",
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "vscode",
+    "template literal",
+    "javascript",
+    "typescript",
+    "syntax highlighting",
+    "css",
+    "html",
+    "shell"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plmrry/vscode-syntax-highlight-comment"
+  },
+  "license": "CC0-1.0",
+  "author": "paul-murray",
+  "publisher": "paul-murray",
+  "type": "module",
+  "main": "./ts-out/extension.js",
+  "types": "./ts-out/extension.d.ts",
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "README.md",
+    "src",
+    "package.json",
+    "syntaxes",
+    "ts-out",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "biome": "biome check --write --unsafe .",
+    "precompile": "npm run biome",
+    "compile": "tsgo --build",
+    "prebuild": "node ./scripts/build-grammar.mjs",
+    "build": "npm run compile",
+    "prepackage": "npm run build",
+    "package": "vsce package",
+    "prepublish": "npm run package",
+    "publish": "vsce publish patch"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "syntaxHighlightComment.showSupportedMarkers",
+        "title": "Syntax Highlight Comment: Show Supported Markers"
+      }
+    ],
+    "grammars": [
+      {
+        "scopeName": "syntax-highlight-comment.injection",
+        "path": "./syntaxes/syntax-highlight-comment.tmLanguage.json",
+        "injectTo": [
+          "source.js",
+          "source.js.jsx",
+          "source.ts",
+          "source.tsx"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.syntax-highlight-comment.css": "css",
+          "meta.embedded.block.syntax-highlight-comment.html": "html",
+          "meta.embedded.block.syntax-highlight-comment.shell": "shellscript"
+        },
+        "tokenTypes": {
+          "meta.embedded.block.syntax-highlight-comment.css": "other",
+          "meta.embedded.block.syntax-highlight-comment.html": "other",
+          "meta.embedded.block.syntax-highlight-comment.shell": "other"
+        }
+      }
+    ]
+  },
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "devDependencies": {
+    "@biomejs/biome": "latest",
+    "@types/node": "24",
+    "@types/vscode": "^1.109",
+    "@vscode/vsce": "latest",
+    "@typescript/native-preview": "latest"
+  },
+  "packageManager": "npm@11.11.0+sha512.f36811c4aae1fde639527368ae44c571d050006a608d67a191f195a801a52637a312d259186254aa3a3799b05335b7390539cf28656d18f0591a1125ba35f973",
+  "engines": {
+    "node": "24.x",
+    "vscode": "^1.109.5"
+  },
+  "pricing": "Free",
+  "vsce": {
+    "out": "vsix-file",
+    "githubBranch": "main",
+    "noDependencies": true
+  }
 }
