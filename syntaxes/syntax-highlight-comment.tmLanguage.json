@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Syntax Highlight Comment Injection",
+  "scopeName": "syntax-highlight-comment.injection",
+  "injectionSelector": "L:source.js -comment -string, L:source.js.jsx -comment -string, L:source.ts -comment -string, L:source.tsx -comment -string",
+  "patterns": [
+    {
+      "include": "#css-template"
+    },
+    {
+      "include": "#html-template"
+    },
+    {
+      "include": "#shell-template"
+    }
+  ],
+  "repository": {
+    "template-interpolation": {
+      "name": "meta.template.expression.js",
+      "begin": "\\$\\{",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.template-expression.begin.js"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.template-expression.end.js"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.ts"
+        },
+        {
+          "include": "source.js"
+        }
+      ]
+    },
+    "css-template": {
+      "name": "meta.template-literal.syntax-highlight-comment.css",
+      "begin": "(\\/\\*\\*?\\s*(?:css)\\s*\\*\\/)(\\s*)(`)",
+      "beginCaptures": {
+        "1": {
+          "name": "comment.block.documentation.js"
+        },
+        "3": {
+          "name": "punctuation.definition.string.template.begin.js"
+        }
+      },
+      "end": "(?<!\\\\)`",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.template.end.js"
+        }
+      },
+      "contentName": "meta.embedded.block.syntax-highlight-comment.css",
+      "patterns": [
+        {
+          "include": "#template-interpolation"
+        },
+        {
+          "include": "source.css"
+        }
+      ]
+    },
+    "html-template": {
+      "name": "meta.template-literal.syntax-highlight-comment.html",
+      "begin": "(\\/\\*\\*?\\s*(?:html)\\s*\\*\\/)(\\s*)(`)",
+      "beginCaptures": {
+        "1": {
+          "name": "comment.block.documentation.js"
+        },
+        "3": {
+          "name": "punctuation.definition.string.template.begin.js"
+        }
+      },
+      "end": "(?<!\\\\)`",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.template.end.js"
+        }
+      },
+      "contentName": "meta.embedded.block.syntax-highlight-comment.html",
+      "patterns": [
+        {
+          "include": "#template-interpolation"
+        },
+        {
+          "include": "text.html.basic"
+        }
+      ]
+    },
+    "shell-template": {
+      "name": "meta.template-literal.syntax-highlight-comment.shell",
+      "begin": "(\\/\\*\\*?\\s*(?:shell|shellscript|sh|bash|zsh)\\s*\\*\\/)(\\s*)(`)",
+      "beginCaptures": {
+        "1": {
+          "name": "comment.block.documentation.js"
+        },
+        "3": {
+          "name": "punctuation.definition.string.template.begin.js"
+        }
+      },
+      "end": "(?<!\\\\)`",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.template.end.js"
+        }
+      },
+      "contentName": "meta.embedded.block.syntax-highlight-comment.shell",
+      "patterns": [
+        {
+          "include": "#template-interpolation"
+        },
+        {
+          "include": "source.shell"
+        }
+      ]
+    }
+  }
+}

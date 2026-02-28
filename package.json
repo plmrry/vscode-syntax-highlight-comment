@@ -1,0 +1,75 @@
+{
+	"name": "vscode-syntax-highlight-comment",
+	"displayName": "Syntax Highlight Comment",
+	"description": "Enable CSS/HTML/shell highlighting in JS/TS template literals using comment markers like /** css */.",
+	"version": "0.1.0",
+	"author": "paul-murray",
+	"publisher": "paul-murray",
+	"license": "CC0-1.0",
+	"type": "module",
+	"engines": {
+		"vscode": "^1.95.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"keywords": [
+		"vscode",
+		"template literal",
+		"javascript",
+		"typescript",
+		"syntax highlighting",
+		"css",
+		"html",
+		"shell"
+	],
+	"main": "./dist/extension.js",
+	"activationEvents": [
+		"onLanguage:javascript",
+		"onLanguage:javascriptreact",
+		"onLanguage:typescript",
+		"onLanguage:typescriptreact"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "syntaxHighlightComment.showSupportedMarkers",
+				"title": "Syntax Highlight Comment: Show Supported Markers"
+			}
+		],
+		"grammars": [
+			{
+				"scopeName": "syntax-highlight-comment.injection",
+				"path": "./syntaxes/syntax-highlight-comment.tmLanguage.json",
+				"injectTo": [
+					"source.js",
+					"source.js.jsx",
+					"source.ts",
+					"source.tsx"
+				],
+				"embeddedLanguages": {
+					"meta.embedded.block.syntax-highlight-comment.css": "css",
+					"meta.embedded.block.syntax-highlight-comment.html": "html",
+					"meta.embedded.block.syntax-highlight-comment.shell": "shellscript"
+				},
+				"tokenTypes": {
+					"meta.embedded.block.syntax-highlight-comment.css": "other",
+					"meta.embedded.block.syntax-highlight-comment.html": "other",
+					"meta.embedded.block.syntax-highlight-comment.shell": "other"
+				}
+			}
+		]
+	},
+	"scripts": {
+		"build:grammar": "node ./scripts/build-grammar.mjs",
+		"compile": "tsc -p ./tsconfig.json",
+		"build": "pnpm run build:grammar && pnpm run compile",
+		"watch": "tsc -w -p ./tsconfig.json",
+		"vscode:prepublish": "pnpm run build"
+	},
+	"devDependencies": {
+		"@types/node": "^22.13.10",
+		"@types/vscode": "^1.95.0",
+		"typescript": "^5.8.2"
+	}
+}
