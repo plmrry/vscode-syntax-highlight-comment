@@ -1,6 +1,7 @@
 {
   "name": "vscode-syntax-highlight-comment",
   "displayName": "Syntax Highlight Comment",
+  "icon": "icon.png",
   "version": "2026.2.280054",
   "description": "Enable syntax highlighting in JS/TS template literals using comment markers like /** css */.",
   "categories": [
@@ -30,6 +31,7 @@
     "CHANGELOG.md",
     "LICENSE.md",
     "README.md",
+    "icon.png",
     "src",
     "package.json",
     "syntaxes",
@@ -38,13 +40,13 @@
   ],
   "scripts": {
     "biome": "biome check --write --unsafe .",
-    "precompile": "npm run biome",
+    "precompile": "pnpm run biome",
     "compile": "tsgo --build",
     "prebuild": "node ./scripts/build-grammar.mjs",
-    "build": "npm run compile",
-    "prepackage": "npm run build",
+    "build": "pnpm run compile",
+    "prepackage": "pnpm run build",
     "package": "vsce package",
-    "prepublish": "npm run package",
+    "prepublish": "pnpm run package",
     "publish": "vsce publish patch"
   },
   "contributes": {
@@ -81,7 +83,8 @@
     "onLanguage:javascript",
     "onLanguage:javascriptreact",
     "onLanguage:typescript",
-    "onLanguage:typescriptreact"
+    "onLanguage:typescriptreact",
+    "onCommand:syntaxHighlightComment.showSupportedMarkers"
   ],
   "devDependencies": {
     "@biomejs/biome": "latest",
@@ -90,7 +93,7 @@
     "@vscode/vsce": "latest",
     "@typescript/native-preview": "latest"
   },
-  "packageManager": "npm@11.11.0+sha512.f36811c4aae1fde639527368ae44c571d050006a608d67a191f195a801a52637a312d259186254aa3a3799b05335b7390539cf28656d18f0591a1125ba35f973",
+  "packageManager": "pnpm@9.15.9",
   "engines": {
     "node": "24.x",
     "vscode": "^1.109.5"
