@@ -5,7 +5,8 @@ import {
   SUPPORTED_MARKERS,
 } from "./markers.js";
 
-const COMMENT_MARKER_PATTERN = /\/\*\*?\s*([a-zA-Z][\w-]*)\s*\*\/(?=\s*`)/g;
+const COMMENT_MARKER_PATTERN =
+  /\/\*\*?\s*([a-zA-Z][\w-]*)\s*\*\/(?=\s*(?:[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*)*\s*)?`)/g;
 const DIAGNOSTIC_CODE = "unsupported-syntax-highlight-comment-marker";
 
 export const SUPPORTED_DOCUMENT_LANGUAGES = new Set([

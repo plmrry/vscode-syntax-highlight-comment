@@ -40,7 +40,7 @@
     },
     "css-template": {
       "name": "meta.template-literal.syntax-highlight-comment.css",
-      "begin": "(\\/\\*\\*?\\s*(?:css)\\s*\\*\\/)(\\s*)(`)",
+      "begin": "(\\/\\*\\*?\\s*(?:css)\\s*\\*\\/)(\\s*(?:[A-Za-z_$][\\w$]*(?:\\.[A-Za-z_$][\\w$]*)*\\s*)?)(`)",
       "beginCaptures": {
         "1": {
           "name": "comment.block.documentation.js"
@@ -67,7 +67,7 @@
     },
     "html-template": {
       "name": "meta.template-literal.syntax-highlight-comment.html",
-      "begin": "(\\/\\*\\*?\\s*(?:html)\\s*\\*\\/)(\\s*)(`)",
+      "begin": "(\\/\\*\\*?\\s*(?:html)\\s*\\*\\/)(\\s*(?:[A-Za-z_$][\\w$]*(?:\\.[A-Za-z_$][\\w$]*)*\\s*)?)(`)",
       "beginCaptures": {
         "1": {
           "name": "comment.block.documentation.js"
@@ -94,7 +94,7 @@
     },
     "shell-template": {
       "name": "meta.template-literal.syntax-highlight-comment.shell",
-      "begin": "(\\/\\*\\*?\\s*(?:shell|shellscript|sh|bash|zsh)\\s*\\*\\/)(\\s*)(`)",
+      "begin": "(\\/\\*\\*?\\s*(?:shell|shellscript|sh|bash|zsh)\\s*\\*\\/)(\\s*(?:[A-Za-z_$][\\w$]*(?:\\.[A-Za-z_$][\\w$]*)*\\s*)?)(`)",
       "beginCaptures": {
         "1": {
           "name": "comment.block.documentation.js"

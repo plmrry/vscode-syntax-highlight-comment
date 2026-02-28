@@ -32,7 +32,7 @@ const templates = [
 function createTemplateRule(template) {
 	return {
 		name: `meta.template-literal.syntax-highlight-comment.${template.key}`,
-		begin: `(\\/\\*\\*?\\s*(?:${template.markerRegex})\\s*\\*\\/)(\\s*)(\`)`,
+		begin: `(\\/\\*\\*?\\s*(?:${template.markerRegex})\\s*\\*\\/)(\\s*(?:[A-Za-z_$][\\w$]*(?:\\.[A-Za-z_$][\\w$]*)*\\s*)?)(\`)`,
 		beginCaptures: {
 			1: {
 				name: "comment.block.documentation.js",

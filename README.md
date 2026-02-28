@@ -13,6 +13,7 @@ Syntax highlight template literals in JavaScript and TypeScript by placing a com
 
 ```ts
 const foo = /** css */ `.div { color: green }`;
+const qux = /** css */ styleFn`.btn { color: green }`;
 const bar = /** html */ `<div>haha</div>`;
 const baz = /** shell */ `pnpm run install`;
 ```
@@ -34,5 +35,5 @@ const baz = /** shell */ `pnpm run install`;
 
 ## Notes
 
-- Marker comment must be directly before the template literal, optionally with whitespace in between.
+- Marker comment must be directly before the template literal (or its tag expression), optionally with whitespace in between.
 - Basic `${...}` interpolation is supported inside marked template literals.
