@@ -11,7 +11,7 @@ Syntax highlight template literals in JavaScript and TypeScript by placing a com
 
 const foo = /** css */ `.div { color: green }`;
 const bar = /** html */ `<div>haha</div>`;
-const baz = /** shell */ `pnpm run install`;
+const baz = /** shell */ `npm run install`;
 
 /**
  * Also works with tagged template literals.
@@ -19,7 +19,7 @@ const baz = /** shell */ `pnpm run install`;
 
 const qux = /** css */ test`.btn { color: green }`;
 const lux = /** html */ test`<div>haha</div>`;
-const mux = /** shell */ test`pnpm run install`;
+const mux = /** shell */ test`npm run install`;
 ```
 
 ![Example syntax highlighting](./example.png)

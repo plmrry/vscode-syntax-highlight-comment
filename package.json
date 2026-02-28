@@ -40,13 +40,13 @@
   ],
   "scripts": {
     "biome": "biome check --write --unsafe .",
-    "precompile": "pnpm run biome",
+    "precompile": "npm run biome",
     "compile": "tsgo --build",
     "prebuild": "node ./scripts/build-grammar.mjs",
-    "build": "pnpm run compile",
-    "prepackage": "pnpm run build",
+    "build": "npm run compile",
+    "prepackage": "npm run build",
     "package": "vsce package",
-    "prepublish": "pnpm run package",
+    "prepublish": "npm run package",
     "publish": "vsce publish patch"
   },
   "contributes": {
@@ -83,8 +83,7 @@
     "onLanguage:javascript",
     "onLanguage:javascriptreact",
     "onLanguage:typescript",
-    "onLanguage:typescriptreact",
-    "onCommand:syntaxHighlightComment.showSupportedMarkers"
+    "onLanguage:typescriptreact"
   ],
   "devDependencies": {
     "@biomejs/biome": "latest",
@@ -93,7 +92,7 @@
     "@vscode/vsce": "latest",
     "@typescript/native-preview": "latest"
   },
-  "packageManager": "pnpm@9.15.9",
+  "packageManager": "npm@11.11.0+sha512.f36811c4aae1fde639527368ae44c571d050006a608d67a191f195a801a52637a312d259186254aa3a3799b05335b7390539cf28656d18f0591a1125ba35f973",
   "engines": {
     "node": "24.x",
     "vscode": "^1.109.5"
