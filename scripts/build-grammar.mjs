@@ -76,10 +76,7 @@ const repository = {
 		},
 		patterns: [
 			{
-				include: "source.ts",
-			},
-			{
-				include: "source.js",
+				include: "$base",
 			},
 		],
 	},

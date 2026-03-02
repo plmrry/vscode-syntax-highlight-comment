@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026.2.280054
+
+- Improve template interpolation highlighting inside marker templates.
+- Parse `${...}` expressions using the host document grammar (`$base`) so embedded expressions are highlighted as JavaScript/TypeScript/JSX/TSX appropriately.
+
 ## 0.1.0
 
 - Initial release.
