@@ -52,4 +52,4 @@ jobs:
           git push origin HEAD:${{ github.ref_name }}
 
       - name: Release
-        uses: softprops/action-gh-release@v2.5
+        uses: softprops/action-gh-release@v2
