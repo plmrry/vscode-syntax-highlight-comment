@@ -50,3 +50,6 @@ jobs:
         run: |
           gh auth setup-git
           git push origin HEAD:${{ github.ref_name }}
+
+      - name: Release
+        uses: softprops/action-gh-release@v2.5
