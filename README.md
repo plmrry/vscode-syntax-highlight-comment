@@ -6,7 +6,7 @@ Syntax highlight template literals in JavaScript and TypeScript by placing a com
 
 ```ts
 /**
- * Works with template litersals.
+ * Works with template literals.
  */
 
 const foo = /** css */ `.div { color: green }`;
@@ -21,6 +21,8 @@ const qux = /** css */ test`.btn { color: green }`;
 const lux = /** html */ test`<div>haha</div>`;
 const mux = /** shell */ test`npm run install`;
 ```
+
+## Result
 
 ![Example syntax highlighting](./example.png)
 

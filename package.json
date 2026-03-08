@@ -2,7 +2,7 @@
   "name": "vscode-syntax-highlight-comment",
   "displayName": "Syntax Highlight Comment",
   "icon": "icon.png",
-  "version": "2026.3.2",
+  "version": "2026.3.8",
   "description": "Enable syntax highlighting in JS/TS template literals using comment markers like /** css */.",
   "categories": [
     "Programming Languages"
