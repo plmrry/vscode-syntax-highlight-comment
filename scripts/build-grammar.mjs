@@ -22,6 +22,12 @@ const templates = [
 		includeScope: "text.html.basic",
 	},
 	{
+		key: "js",
+		markerRegex: "js|javascript",
+		embeddedScope: "meta.embedded.block.syntax-highlight-comment.js",
+		includeScope: "source.js",
+	},
+	{
 		key: "shell",
 		markerRegex: "shell|shellscript|sh|bash|zsh",
 		embeddedScope: "meta.embedded.block.syntax-highlight-comment.shell",

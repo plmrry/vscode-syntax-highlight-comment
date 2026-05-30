@@ -11,6 +11,7 @@ Syntax highlight template literals in JavaScript and TypeScript by placing a com
 
 const foo = /** css */ `.div { color: green }`;
 const bar = /** html */ `<div>haha</div>`;
+const bop = /* js */ `const answer = 42;`;
 const baz = /** shell */ `npm run install`;
 
 /**
@@ -19,6 +20,7 @@ const baz = /** shell */ `npm run install`;
 
 const qux = /** css */ test`.btn { color: green }`;
 const lux = /** html */ test`<div>haha</div>`;
+const wop = /* js */ test`const answer = 42;`;
 const mux = /** shell */ test`npm run install`;
 ```
 

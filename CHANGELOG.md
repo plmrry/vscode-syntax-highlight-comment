@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026.5.30
+
+- Add `js`/`javascript` marker support for JavaScript-highlighted template literals.
+
 ## 2026.2.280054
 
 - Improve template interpolation highlighting inside marker templates.
