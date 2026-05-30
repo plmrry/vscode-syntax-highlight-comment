@@ -4,3 +4,5 @@ dist
 .DS_Store
 ts-out
 *.tsbuildinfo
+pnpm-lock.yaml
+pnpm-workspace.yaml
