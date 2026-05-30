@@ -1,4 +1,11 @@
-export const SUPPORTED_MARKERS = ["css", "html", "js", "shell", "svg"] as const;
+export const SUPPORTED_MARKERS = [
+  "css",
+  "html",
+  "js",
+  "shell",
+  "svg",
+  "ts",
+] as const;
 
 export type SupportedMarker = (typeof SUPPORTED_MARKERS)[number];
 
@@ -12,6 +19,8 @@ const MARKER_ALIASES = new Map<string, SupportedMarker>([
   ["shell", "shell"],
   ["shellscript", "shell"],
   ["svg", "svg"],
+  ["typescript", "ts"],
+  ["ts", "ts"],
   ["zsh", "shell"],
 ]);
 

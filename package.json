@@ -1,7 +1,7 @@
 {
   "name": "vscode-syntax-highlight-comment",
   "displayName": "Syntax Highlight Comment",
-  "version": "2026.5.36",
+  "version": "2026.5.40",
   "description": "Enable syntax highlighting in JS/TS template literals using comment markers like /** css */.",
   "categories": [
     "Programming Languages"
@@ -79,12 +79,14 @@
           "meta.embedded.block.syntax-highlight-comment.css": "css",
           "meta.embedded.block.syntax-highlight-comment.html": "html",
           "meta.embedded.block.syntax-highlight-comment.js": "javascript",
+          "meta.embedded.block.syntax-highlight-comment.ts": "typescript",
           "meta.embedded.block.syntax-highlight-comment.shell": "shellscript"
         },
         "tokenTypes": {
           "meta.embedded.block.syntax-highlight-comment.css": "other",
           "meta.embedded.block.syntax-highlight-comment.html": "other",
           "meta.embedded.block.syntax-highlight-comment.js": "other",
+          "meta.embedded.block.syntax-highlight-comment.ts": "other",
           "meta.embedded.block.syntax-highlight-comment.shell": "other"
         }
       }
