@@ -1,32 +1,28 @@
 {
   "name": "vscode-syntax-highlight-comment",
   "displayName": "Syntax Highlight Comment",
-  "icon": "icon.png",
   "version": "2026.3.1101",
   "description": "Enable syntax highlighting in JS/TS template literals using comment markers like /** css */.",
   "categories": [
     "Programming Languages"
   ],
   "keywords": [
-    "vscode",
-    "template literal",
-    "javascript",
-    "typescript",
-    "syntax highlighting",
     "css",
     "html",
-    "shell"
+    "javascript",
+    "shell",
+    "syntax highlighting",
+    "template literal",
+    "typescript",
+    "vscode"
   ],
+  "license": "CC0-1.0",
+  "author": "paul-murray",
   "repository": {
     "type": "git",
     "url": "https://github.com/plmrry/vscode-syntax-highlight-comment"
   },
-  "license": "CC0-1.0",
-  "author": "paul-murray",
   "publisher": "paul-murray",
-  "type": "module",
-  "main": "./ts-out/extension.js",
-  "types": "./ts-out/extension.d.ts",
   "files": [
     "CHANGELOG.md",
     "LICENSE.md",
@@ -38,16 +34,29 @@
     "ts-out",
     "tsconfig.json"
   ],
+  "type": "module",
+  "main": "./ts-out/extension.js",
+  "types": "./ts-out/extension.d.ts",
   "scripts": {
-    "biome": "biome check --write --unsafe .",
-    "precompile": "npm run biome",
-    "compile": "tsgo --build",
     "prebuild": "node ./scripts/build-grammar.mjs",
     "build": "npm run compile",
+    "check": "npm run format && npm run lint",
+    "precompile": "npm run check",
+    "compile": "tsgo --build",
+    "format": "oxfmt --write \"src/**/*.ts\" package.json tsconfig.json .oxfmtrc.json .oxlintrc.json",
+    "lint": "oxlint --fix src",
     "prepackage": "npm run build",
     "package": "vsce package",
     "prepublish": "npm run package",
     "publish": "vsce publish patch"
+  },
+  "devDependencies": {
+    "@types/node": "24",
+    "@types/vscode": "^1.109",
+    "@typescript/native-preview": "latest",
+    "@vscode/vsce": "latest",
+    "oxfmt": "latest",
+    "oxlint": "latest"
   },
   "contributes": {
     "commands": [
@@ -85,18 +94,12 @@
     "onLanguage:typescript",
     "onLanguage:typescriptreact"
   ],
-  "devDependencies": {
-    "@biomejs/biome": "latest",
-    "@types/node": "24",
-    "@types/vscode": "^1.109",
-    "@vscode/vsce": "latest",
-    "@typescript/native-preview": "latest"
-  },
-  "packageManager": "npm@11.11.0+sha512.f36811c4aae1fde639527368ae44c571d050006a608d67a191f195a801a52637a312d259186254aa3a3799b05335b7390539cf28656d18f0591a1125ba35f973",
+  "icon": "icon.png",
   "engines": {
     "node": "24.x",
     "vscode": "^1.109.5"
   },
+  "packageManager": "npm@11.3.0",
   "pricing": "Free",
   "vsce": {
     "out": "vsix-file",

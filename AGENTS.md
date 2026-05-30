@@ -14,15 +14,17 @@ VS Code extension that syntax-highlights template literals in JS/TS files when p
 
 ## Package Manager
 
-Use `pnpm`. If blocked by strict package-manager checks, use `COREPACK_ENABLE_STRICT=0 pnpm <command>`.
+Use `npm`. If blocked by strict package-manager checks, use `COREPACK_ENABLE_STRICT=0 npm <command>`.
 
 ## Commands
 
-- `pnpm run biome` — Format and lint (Biome)
-- `pnpm run compile` — Lint + compile TypeScript (runs biome as precompile hook, then `tsgo --build`)
-- `pnpm run build` — Full build (compile + generate grammar)
+- `npm run format` — Format with oxfmt
+- `npm run lint` — Lint with oxlint and apply safe fixes
+- `npm run check` — Format and lint
+- `npm run compile` — Format/lint + compile TypeScript (runs check as precompile hook, then `tsgo --build`)
+- `npm run build` — Full build (compile + generate grammar)
 - `node ./scripts/build-grammar.mjs` — Regenerate grammar JSON from source script
-- `pnpm run package` — Build + package `.vsix` with vsce
+- `npm run package` — Build + package `.vsix` with vsce
 
 There is no test suite.
 
