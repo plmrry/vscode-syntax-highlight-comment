@@ -12,7 +12,10 @@ Syntax highlight template literals in JavaScript and TypeScript by placing a com
 const foo = /** css */ `.div { color: green }`;
 const bar = /** html */ `<div>haha</div>`;
 const bop = /* js */ `const answer = 42;`;
+const jop = /* jsx */ `const label = <span>Answer</span>;`;
 const baz = /** shell */ `npm run install`;
+const zap = /** ts */ `const answer: number = 42;`;
+const zip = /** tsx */ `const label = <span>Answer</span>;`;
 
 /**
  * Also works with tagged template literals.
@@ -21,7 +24,10 @@ const baz = /** shell */ `npm run install`;
 const qux = /** css */ test`.btn { color: green }`;
 const lux = /** html */ test`<div>haha</div>`;
 const wop = /* js */ test`const answer = 42;`;
+const jup = /* jsx */ test`const label = <span>Answer</span>;`;
 const mux = /** shell */ test`npm run install`;
+const tap = /** ts */ test`const answer: number = 42;`;
+const tip = /** tsx */ test`const label = <span>Answer</span>;`;
 ```
 
 ## Result
