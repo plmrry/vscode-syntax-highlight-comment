@@ -1,8 +1,8 @@
 {
   "name": "vscode-syntax-highlight-comment",
   "displayName": "Syntax Highlight Comment",
-  "version": "2026.5.47",
-  "description": "Enable syntax highlighting in JS/TS template literals using comment markers like /** css */.",
+  "version": "2026.6.29",
+  "description": "Enable syntax highlighting in template literals using comment markers like /** css */.",
   "categories": [
     "Programming Languages"
   ],
@@ -42,7 +42,7 @@
     "build": "npm run compile",
     "check": "npm run format && npm run lint",
     "precompile": "npm run check",
-    "compile": "tsgo --build",
+    "compile": "tsc --build",
     "format": "oxfmt --write .",
     "lint": "oxlint --fix-dangerously .",
     "prepackage": "npm run build",
@@ -53,10 +53,10 @@
   "devDependencies": {
     "@types/node": "24",
     "@types/vscode": "1.120.x",
-    "@typescript/native-preview": "latest",
     "@vscode/vsce": "latest",
     "oxfmt": "latest",
-    "oxlint": "latest"
+    "oxlint": "latest",
+    "typescript": "7.0.1-rc"
   },
   "contributes": {
     "commands": [
@@ -79,14 +79,18 @@
           "meta.embedded.block.syntax-highlight-comment.css": "css",
           "meta.embedded.block.syntax-highlight-comment.html": "html",
           "meta.embedded.block.syntax-highlight-comment.js": "javascript",
+          "meta.embedded.block.syntax-highlight-comment.jsx": "javascriptreact",
           "meta.embedded.block.syntax-highlight-comment.ts": "typescript",
+          "meta.embedded.block.syntax-highlight-comment.tsx": "typescriptreact",
           "meta.embedded.block.syntax-highlight-comment.shell": "shellscript"
         },
         "tokenTypes": {
           "meta.embedded.block.syntax-highlight-comment.css": "other",
           "meta.embedded.block.syntax-highlight-comment.html": "other",
           "meta.embedded.block.syntax-highlight-comment.js": "other",
+          "meta.embedded.block.syntax-highlight-comment.jsx": "other",
           "meta.embedded.block.syntax-highlight-comment.ts": "other",
+          "meta.embedded.block.syntax-highlight-comment.tsx": "other",
           "meta.embedded.block.syntax-highlight-comment.shell": "other"
         }
       }

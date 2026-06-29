@@ -28,10 +28,28 @@ const templates = [
     includeScope: "source.js",
   },
   {
+    key: "jsx",
+    markerRegex: "jsx|javascriptreact",
+    embeddedScope: "meta.embedded.block.syntax-highlight-comment.jsx",
+    includeScope: "source.js.jsx",
+  },
+  {
     key: "shell",
     markerRegex: "shell|shellscript|sh|bash|zsh",
     embeddedScope: "meta.embedded.block.syntax-highlight-comment.shell",
     includeScope: "source.shell",
+  },
+  {
+    key: "ts",
+    markerRegex: "ts|typescript",
+    embeddedScope: "meta.embedded.block.syntax-highlight-comment.ts",
+    includeScope: "source.ts",
+  },
+  {
+    key: "tsx",
+    markerRegex: "tsx|typescriptreact",
+    embeddedScope: "meta.embedded.block.syntax-highlight-comment.tsx",
+    includeScope: "source.tsx",
   },
 ];
 

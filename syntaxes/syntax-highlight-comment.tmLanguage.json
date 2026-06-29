@@ -14,7 +14,16 @@
       "include": "#js-template"
     },
     {
+      "include": "#jsx-template"
+    },
+    {
       "include": "#shell-template"
+    },
+    {
+      "include": "#ts-template"
+    },
+    {
+      "include": "#tsx-template"
     }
   ],
   "repository": {
@@ -119,6 +128,33 @@
         }
       ]
     },
+    "jsx-template": {
+      "name": "meta.template-literal.syntax-highlight-comment.jsx",
+      "begin": "(\\/\\*\\*?\\s*(?:jsx|javascriptreact)\\s*\\*\\/)(\\s*(?:[A-Za-z_$][\\w$]*(?:\\.[A-Za-z_$][\\w$]*)*\\s*)?)(`)",
+      "beginCaptures": {
+        "1": {
+          "name": "comment.block.documentation.js"
+        },
+        "3": {
+          "name": "punctuation.definition.string.template.begin.js"
+        }
+      },
+      "end": "(?<!\\\\)`",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.template.end.js"
+        }
+      },
+      "contentName": "meta.embedded.block.syntax-highlight-comment.jsx",
+      "patterns": [
+        {
+          "include": "#template-interpolation"
+        },
+        {
+          "include": "source.js.jsx"
+        }
+      ]
+    },
     "shell-template": {
       "name": "meta.template-literal.syntax-highlight-comment.shell",
       "begin": "(\\/\\*\\*?\\s*(?:shell|shellscript|sh|bash|zsh)\\s*\\*\\/)(\\s*(?:[A-Za-z_$][\\w$]*(?:\\.[A-Za-z_$][\\w$]*)*\\s*)?)(`)",
@@ -143,6 +179,60 @@
         },
         {
           "include": "source.shell"
+        }
+      ]
+    },
+    "ts-template": {
+      "name": "meta.template-literal.syntax-highlight-comment.ts",
+      "begin": "(\\/\\*\\*?\\s*(?:ts|typescript)\\s*\\*\\/)(\\s*(?:[A-Za-z_$][\\w$]*(?:\\.[A-Za-z_$][\\w$]*)*\\s*)?)(`)",
+      "beginCaptures": {
+        "1": {
+          "name": "comment.block.documentation.js"
+        },
+        "3": {
+          "name": "punctuation.definition.string.template.begin.js"
+        }
+      },
+      "end": "(?<!\\\\)`",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.template.end.js"
+        }
+      },
+      "contentName": "meta.embedded.block.syntax-highlight-comment.ts",
+      "patterns": [
+        {
+          "include": "#template-interpolation"
+        },
+        {
+          "include": "source.ts"
+        }
+      ]
+    },
+    "tsx-template": {
+      "name": "meta.template-literal.syntax-highlight-comment.tsx",
+      "begin": "(\\/\\*\\*?\\s*(?:tsx|typescriptreact)\\s*\\*\\/)(\\s*(?:[A-Za-z_$][\\w$]*(?:\\.[A-Za-z_$][\\w$]*)*\\s*)?)(`)",
+      "beginCaptures": {
+        "1": {
+          "name": "comment.block.documentation.js"
+        },
+        "3": {
+          "name": "punctuation.definition.string.template.begin.js"
+        }
+      },
+      "end": "(?<!\\\\)`",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.template.end.js"
+        }
+      },
+      "contentName": "meta.embedded.block.syntax-highlight-comment.tsx",
+      "patterns": [
+        {
+          "include": "#template-interpolation"
+        },
+        {
+          "include": "source.tsx"
         }
       ]
     }

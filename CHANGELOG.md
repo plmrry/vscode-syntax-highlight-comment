@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026.6.29
+
+- Add `jsx`/`javascriptreact`, `ts`/`typescript`, and `tsx`/`typescriptreact` marker support for JavaScript React, TypeScript, and TypeScript React-highlighted template literals.
+
 ## 2026.5.30
 
 - Add `js`/`javascript` marker support for JavaScript-highlighted template literals.
