@@ -40,6 +40,12 @@ const templates = [
     includeScope: "source.shell",
   },
   {
+    key: "svg",
+    markerRegex: "svg",
+    embeddedScope: "meta.embedded.block.syntax-highlight-comment.svg",
+    includeScope: "text.xml",
+  },
+  {
     key: "ts",
     markerRegex: "ts|typescript",
     embeddedScope: "meta.embedded.block.syntax-highlight-comment.ts",
@@ -114,7 +120,7 @@ const grammar = {
   $schema:
     "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   name: "Syntax Highlight Comment Injection",
-  scopeName: "syntax-highlight-comment.injection",
+  scopeName: "source.syntax-highlight-comment.injection",
   injectionSelector:
     "L:source.js -comment -string, L:source.js.jsx -comment -string, L:source.ts -comment -string, L:source.tsx -comment -string",
   patterns: templates.map((template) => ({

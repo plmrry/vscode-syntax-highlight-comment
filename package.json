@@ -1,7 +1,7 @@
 {
   "name": "vscode-syntax-highlight-comment",
   "displayName": "Syntax Highlight Comment",
-  "version": "2026.6.30",
+  "version": "2026.9.3",
   "description": "Enable syntax highlighting in template literals using comment markers like /** css */.",
   "categories": [
     "Programming Languages"
@@ -51,12 +51,12 @@
     "publish": "vsce publish patch"
   },
   "devDependencies": {
-    "@types/node": "24",
-    "@types/vscode": "1.120.x",
+    "@types/node": "26",
+    "@types/vscode": "1.136.x",
     "@vscode/vsce": "latest",
     "oxfmt": "latest",
     "oxlint": "latest",
-    "typescript": "7.0.1-rc"
+    "typescript": "7.0.2"
   },
   "contributes": {
     "commands": [
@@ -67,7 +67,7 @@
     ],
     "grammars": [
       {
-        "scopeName": "syntax-highlight-comment.injection",
+        "scopeName": "source.syntax-highlight-comment.injection",
         "path": "./syntaxes/syntax-highlight-comment.tmLanguage.json",
         "injectTo": [
           "source.js",
@@ -82,7 +82,8 @@
           "meta.embedded.block.syntax-highlight-comment.jsx": "javascriptreact",
           "meta.embedded.block.syntax-highlight-comment.ts": "typescript",
           "meta.embedded.block.syntax-highlight-comment.tsx": "typescriptreact",
-          "meta.embedded.block.syntax-highlight-comment.shell": "shellscript"
+          "meta.embedded.block.syntax-highlight-comment.shell": "shellscript",
+          "meta.embedded.block.syntax-highlight-comment.svg": "xml"
         },
         "tokenTypes": {
           "meta.embedded.block.syntax-highlight-comment.css": "other",
@@ -91,7 +92,8 @@
           "meta.embedded.block.syntax-highlight-comment.jsx": "other",
           "meta.embedded.block.syntax-highlight-comment.ts": "other",
           "meta.embedded.block.syntax-highlight-comment.tsx": "other",
-          "meta.embedded.block.syntax-highlight-comment.shell": "other"
+          "meta.embedded.block.syntax-highlight-comment.shell": "other",
+          "meta.embedded.block.syntax-highlight-comment.svg": "other"
         }
       }
     ]
@@ -106,7 +108,7 @@
   "engines": {
     "node": "24.14.0",
     "npm": "11.9.0",
-    "vscode": "^1.120.0"
+    "vscode": "^1.136.0"
   },
   "packageManager": "npm@11.9.0",
   "pricing": "Free",

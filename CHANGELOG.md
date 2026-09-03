@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026.9.3
+
+- Add `svg` marker support for SVG-highlighted template literals.
+- Update dependencies.
+
 ## 2026.6.29
 
 - Add `jsx`/`javascriptreact`, `ts`/`typescript`, and `tsx`/`typescriptreact` marker support for JavaScript React, TypeScript, and TypeScript React-highlighted template literals.
