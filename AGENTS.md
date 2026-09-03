@@ -25,8 +25,7 @@ Use `npm`. If blocked by strict package-manager checks, use `COREPACK_ENABLE_STR
 - `npm run build` — Full build (compile + generate grammar)
 - `node ./scripts/build-grammar.mjs` — Regenerate grammar JSON from source script
 - `npm run package` — Build + package `.vsix` with vsce
-
-There is no test suite.
+- `npm test` — Run unit tests with Vitest
 
 ## Architecture
 
