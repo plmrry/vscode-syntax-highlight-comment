@@ -22,13 +22,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 24.x
 
       - name: Install
         run: npm install
 
       - name: Publish
-        run: npm run publish -- --no-git-tag-version
+        run: npm run package -- --no-git-tag-version
         env:
           VSCE_PAT: ${{ secrets.VS_MARKETPLACE_TOKEN }}
 
