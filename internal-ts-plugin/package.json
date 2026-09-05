@@ -1,0 +1,5 @@
+{
+  "name": "internal-ts-plugin",
+  "private": true,
+  "main": "internal-ts-plugin.js"
+}
