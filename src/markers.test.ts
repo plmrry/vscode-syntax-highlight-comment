@@ -3,7 +3,7 @@ import {
   resolveMarker,
   SUPPORTED_MARKER_LIST,
   SUPPORTED_MARKERS,
-} from "../src/markers.js";
+} from "./markers.js";
 
 const aliasExpectations = {
   bash: "shell",

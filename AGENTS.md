@@ -72,3 +72,5 @@ Entry point is `src/extension.ts`. Compiled output goes to `ts-out/`.
 - When grammar behavior changes, update `scripts/build-grammar.mjs` and regenerate.
 - Keep diagnostics and marker aliases in sync when adding/removing marker types.
 - Update `CHANGELOG.md` for user-visible behavior changes.
+- Update this file, `AGENTS.md`, when adding new guidance for coding agents.
+- `CLAUDE.md` is symlinked to `AGENTS.md` for Claude Code. Update `AGENTS.md` and the symlink will reflect the changes.

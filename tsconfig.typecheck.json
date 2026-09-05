@@ -6,5 +6,11 @@
     "rootDir": "./",
     "tsBuildInfoFile": "node_modules/.tsbuildinfo-typecheck"
   },
-  "include": ["src/**/*.ts", "tests/**/*.ts", "vitest.config.ts"]
+  "include": [
+    "src/**/*.ts",
+    "scripts/**/*.test.ts",
+    "test-support/**/*.ts",
+    "vitest.config.ts"
+  ],
+  "exclude": []
 }

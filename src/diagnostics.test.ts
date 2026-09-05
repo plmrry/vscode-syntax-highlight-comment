@@ -4,15 +4,15 @@ import {
   MarkerCodeActionProvider,
   refreshDiagnostics,
   SUPPORTED_DOCUMENT_LANGUAGES,
-} from "../src/diagnostics.js";
-import { SUPPORTED_MARKERS } from "../src/markers.js";
+} from "./diagnostics.js";
+import { SUPPORTED_MARKERS } from "./markers.js";
 import {
   CodeActionKind,
   Diagnostic,
   DiagnosticSeverity,
   Position,
   Range,
-} from "./vscode-stub.js";
+} from "../test-support/vscode-stub.js";
 
 describe("SUPPORTED_DOCUMENT_LANGUAGES", () => {
   it("covers the four JS/TS language ids", () => {

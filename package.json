@@ -1,7 +1,7 @@
 {
   "name": "vscode-syntax-highlight-comment",
   "displayName": "Syntax Highlight Comment",
-  "version": "2026.9.5999996",
+  "version": "2026.9.601",
   "description": "Enable syntax highlighting in template literals using comment markers like /** css */.",
   "categories": [
     "Programming Languages"
@@ -96,7 +96,17 @@
           "meta.embedded.block.syntax-highlight-comment.svg": "other"
         }
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Syntax Highlight Comment",
+      "properties": {
+        "syntaxHighlightComment.semanticTokens.enable": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Highlight marked template literals in TypeScript files using semantic tokens. Enable this if `#editor.experimental.preferTreeSitter.typescript#` is on, which makes VS Code ignore this extension's TextMate grammar injection. **Trade-off:** while enabled, this extension supplies the semantic tokens for TypeScript documents, so the built-in TypeScript type-aware semantic highlighting is not applied."
+        }
+      }
+    }
   },
   "activationEvents": [
     "onLanguage:javascript",
