@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { MARKER_ALIASES, SUPPORTED_MARKERS } from "../src/markers.ts";
 
 const rootDir = resolve(import.meta.dirname, "..");
 const outputFile = resolve(
@@ -8,56 +9,33 @@ const outputFile = resolve(
   "syntax-highlight-comment.tmLanguage.json",
 );
 
-const templates = [
-  {
-    key: "css",
-    markerRegex: "css",
-    embeddedScope: "meta.embedded.block.syntax-highlight-comment.css",
-    includeScope: "source.css",
-  },
-  {
-    key: "html",
-    markerRegex: "html",
-    embeddedScope: "meta.embedded.block.syntax-highlight-comment.html",
-    includeScope: "text.html.basic",
-  },
-  {
-    key: "js",
-    markerRegex: "js|javascript",
-    embeddedScope: "meta.embedded.block.syntax-highlight-comment.js",
-    includeScope: "source.js",
-  },
-  {
-    key: "jsx",
-    markerRegex: "jsx|javascriptreact",
-    embeddedScope: "meta.embedded.block.syntax-highlight-comment.jsx",
-    includeScope: "source.js.jsx",
-  },
-  {
-    key: "shell",
-    markerRegex: "shell|shellscript|sh|bash|zsh",
-    embeddedScope: "meta.embedded.block.syntax-highlight-comment.shell",
-    includeScope: "source.shell",
-  },
-  {
-    key: "svg",
-    markerRegex: "svg",
-    embeddedScope: "meta.embedded.block.syntax-highlight-comment.svg",
-    includeScope: "text.xml",
-  },
-  {
-    key: "ts",
-    markerRegex: "ts|typescript",
-    embeddedScope: "meta.embedded.block.syntax-highlight-comment.ts",
-    includeScope: "source.ts",
-  },
-  {
-    key: "tsx",
-    markerRegex: "tsx|typescriptreact",
-    embeddedScope: "meta.embedded.block.syntax-highlight-comment.tsx",
-    includeScope: "source.tsx",
-  },
-];
+const INCLUDE_SCOPES = {
+  css: "source.css",
+  html: "text.html.basic",
+  js: "source.js",
+  jsx: "source.js.jsx",
+  shell: "source.shell",
+  svg: "text.xml",
+  ts: "source.ts",
+  tsx: "source.tsx",
+};
+
+const templates = SUPPORTED_MARKERS.map((marker) => {
+  const includeScope = INCLUDE_SCOPES[marker];
+
+  if (!includeScope) {
+    throw new Error(
+      `No TextMate include scope for marker "${marker}". Add it to INCLUDE_SCOPES in scripts/build-grammar.mjs.`,
+    );
+  }
+
+  return {
+    key: marker,
+    markerRegex: MARKER_ALIASES[marker].join("|"),
+    embeddedScope: `meta.embedded.block.syntax-highlight-comment.${marker}`,
+    includeScope,
+  };
+});
 
 function createTemplateRule(template) {
   return {

@@ -1,39 +1,32 @@
-export const SUPPORTED_MARKERS = [
-  "css",
-  "html",
-  "js",
-  "jsx",
-  "shell",
-  "svg",
-  "ts",
-  "tsx",
-] as const;
+export const MARKER_ALIASES = {
+  css: ["css"],
+  html: ["html"],
+  js: ["js", "javascript"],
+  jsx: ["jsx", "javascriptreact"],
+  shell: ["shell", "shellscript", "sh", "bash", "zsh"],
+  svg: ["svg"],
+  ts: ["ts", "typescript"],
+  tsx: ["tsx", "typescriptreact"],
+} as const;
 
-export type SupportedMarker = (typeof SUPPORTED_MARKERS)[number];
+export type SupportedMarker = keyof typeof MARKER_ALIASES;
 
-const MARKER_ALIASES = new Map<string, SupportedMarker>([
-  ["bash", "shell"],
-  ["css", "css"],
-  ["html", "html"],
-  ["javascript", "js"],
-  ["javascriptreact", "jsx"],
-  ["js", "js"],
-  ["jsx", "jsx"],
-  ["sh", "shell"],
-  ["shell", "shell"],
-  ["shellscript", "shell"],
-  ["svg", "svg"],
-  ["typescript", "ts"],
-  ["typescriptreact", "tsx"],
-  ["ts", "ts"],
-  ["tsx", "tsx"],
-  ["zsh", "shell"],
-]);
+export const SUPPORTED_MARKERS = Object.keys(
+  MARKER_ALIASES,
+) as SupportedMarker[];
 
 export const SUPPORTED_MARKER_LIST = SUPPORTED_MARKERS.join(", ");
 
+const ALIAS_LOOKUP = new Map<string, SupportedMarker>();
+
+for (const marker of SUPPORTED_MARKERS) {
+  for (const alias of MARKER_ALIASES[marker]) {
+    ALIAS_LOOKUP.set(alias, marker);
+  }
+}
+
 export function resolveMarker(marker: string): SupportedMarker | undefined {
-  return MARKER_ALIASES.get(normalizeMarker(marker));
+  return ALIAS_LOOKUP.get(normalizeMarker(marker));
 }
 
 function normalizeMarker(marker: string): string {

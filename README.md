@@ -34,6 +34,21 @@ const tip = /** tsx */ test`const label = <span>Answer</span>;`;
 
 ![Example syntax highlighting](./example.png)
 
+### Not supported: `editor.experimental.preferTreeSitter`
+
+> [!WARNING]
+> This extension does not work when tree-sitter tokenization is enabled for a
+> language it targets — most notably
+> `"editor.experimental.preferTreeSitter.typescript": true`.
+
+- Highlighting here is delivered entirely by TextMate grammar injection.
+- When `preferTreeSitter` is on for a language, VS Code hands that language's tokenization to tree-sitter and ignores injected TextMate grammars outright.
+- The result is that marked template literals in `.ts`/`.tsx` files render as plain strings, with no error and no diagnostic.
+- To confirm this is what you are hitting, run **Developer: Inspect Editor Tokens and Scopes** and look for `tree-sitter token` / `tree-sitter tree` rows in the inspector.
+- The fix is to turn the setting off:
+  - `"editor.experimental.preferTreeSitter.typescript": false`
+- Other `preferTreeSitter` languages (`css`, `ini`, `regex`) are harmless — this extension does not inject into them.
+
 ### Notes
 
 - Marker comment must be directly before the template literal (or its tag expression), optionally with whitespace in between.

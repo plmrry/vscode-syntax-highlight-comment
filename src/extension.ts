@@ -6,11 +6,6 @@ import {
   SUPPORTED_DOCUMENT_LANGUAGES,
 } from "./diagnostics.js";
 import { SUPPORTED_MARKER_LIST } from "./markers.js";
-import {
-  EmbeddedSemanticTokensProvider,
-  SEMANTIC_TOKENS_LEGEND,
-  SEMANTIC_TOKENS_SELECTOR,
-} from "./semantic-tokens.js";
 
 const COMMAND_SHOW_SUPPORTED_MARKERS =
   "syntaxHighlightComment.showSupportedMarkers";
@@ -58,14 +53,6 @@ export function activate(context: vscode.ExtensionContext): void {
         providedCodeActionKinds:
           MarkerCodeActionProvider.providedCodeActionKinds,
       },
-    ),
-  );
-
-  context.subscriptions.push(
-    vscode.languages.registerDocumentSemanticTokensProvider(
-      SEMANTIC_TOKENS_SELECTOR,
-      new EmbeddedSemanticTokensProvider(),
-      SEMANTIC_TOKENS_LEGEND,
     ),
   );
 
