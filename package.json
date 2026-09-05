@@ -1,7 +1,7 @@
 {
   "name": "vscode-syntax-highlight-comment",
   "displayName": "Syntax Highlight Comment",
-  "version": "2026.9.599992",
+  "version": "2026.9.5999993",
   "description": "Enable syntax highlighting in template literals using comment markers like /** css */.",
   "categories": [
     "Programming Languages"
@@ -45,7 +45,7 @@
     "test": "vitest run",
     "prebuild": "npm run build-grammar && npm run check && npm run typecheck && npm test",
     "build": "tsc --build",
-    "postbuild": "npm run package",
+    "prepackage": "npm run build",
     "package": "vsce package",
     "postpackage": "vsce publish patch"
   },
@@ -106,8 +106,8 @@
   ],
   "icon": "icon.png",
   "engines": {
-    "node": "24.14.0",
-    "npm": "11.9.0",
+    "node": "24.x",
+    "npm": "11.x",
     "vscode": "^1.136.0"
   },
   "packageManager": "npm@11.9.0",
