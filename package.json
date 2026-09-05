@@ -29,6 +29,7 @@
     "README.md",
     "icon.png",
     "package.json",
+    "src",
     "syntaxes",
     "ts-out"
   ],
