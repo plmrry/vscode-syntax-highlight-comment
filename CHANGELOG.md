@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Re-add the bundled TypeScript language service plugin (`vscode-syntax-highlight-comment-ts-plugin`), which suppresses semantic classification inside marked template literals so the injected grammar's highlighting isn't painted over. It's now wired up as a real `file:` dependency (resolved by `npm install` via `install-links=true` in `.npmrc`) instead of a hand-rolled `postinstall`/`prebuild` copy script.
+
 ## 2026.9.3
 
 - Add `svg` marker support for SVG-highlighted template literals.
