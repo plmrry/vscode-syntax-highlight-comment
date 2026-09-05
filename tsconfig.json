@@ -1,6 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
     "declaration": true,
     "declarationDir": "./ts-out",
     "declarationMap": true,
@@ -13,7 +15,9 @@
     "sourceMap": false,
     "strict": false,
     "target": "esnext",
+    "tsBuildInfoFile": "node_modules/.tsbuildinfo",
     "types": ["node"],
     "verbatimModuleSyntax": false
-  }
+  },
+  "include": ["src/**/*.ts", "tests/**/*.ts", "vitest.config.ts"]
 }

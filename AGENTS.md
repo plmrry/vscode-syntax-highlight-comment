@@ -48,7 +48,9 @@ Vitest unit tests live in `tests/`. `npm test` runs them; `npx vitest` watches.
   aliases, and embedded scopes. This is the guard against the marker-list
   duplication between `src/markers.ts` and `scripts/build-grammar.mjs`.
 - Tests are excluded from the packaged `.vsix` by `package.json`'s `files`
-  allowlist, and from `tsc --build` by `rootDir: ./src`.
+  allowlist, and from `tsc --build` by tsconfig's `include: ["src/**/*.ts"]`.
+  Do not widen `rootDir` to pull tests into the program — that relocates all
+  output to `ts-out/src/`, which silently breaks `main: ./ts-out/extension.js`.
 
 ## Architecture
 
