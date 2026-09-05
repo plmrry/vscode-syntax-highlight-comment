@@ -8,7 +8,7 @@
     "lib": ["esnext"],
     "module": "nodenext",
     "outDir": "./ts-out",
-    "rootDir": "./src",
+    "rootDir": "./",
     "skipLibCheck": true,
     "sourceMap": false,
     "strict": false,

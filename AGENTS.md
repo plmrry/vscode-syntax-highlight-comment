@@ -25,8 +25,30 @@ Use `npm`. If blocked by strict package-manager checks, use `COREPACK_ENABLE_STR
 - `npm run build` — Full build (compile + generate grammar)
 - `node ./scripts/build-grammar.mjs` — Regenerate grammar JSON from source script
 - `npm run package` — Build + package `.vsix` with vsce
+- `npm test` — Run the Vitest unit suite
 
-There is no test suite.
+## Tests
+
+Vitest unit tests live in `tests/`. `npm test` runs them; `npx vitest` watches.
+
+- The `vscode` module is injected by the extension host at runtime and does not
+  exist on npm, so it cannot be imported in a plain Node process.
+  `vitest.config.ts` aliases `vscode` to `tests/vscode-stub.ts`, a minimal
+  runtime stand-in for the classes `src/` actually constructs (`Position`,
+  `Range`, `Diagnostic`, `DiagnosticSeverity`, `CodeAction`, `CodeActionKind`,
+  `WorkspaceEdit`). Extend the stub when `src/` starts using a new `vscode`
+  value.
+- Coverage is unit-level only: marker resolution, diagnostic scanning, quick-fix
+  actions, and the generated grammar's structure. Anything requiring a real
+  editor — actual TextMate tokenization, real VS Code APIs, on-screen colors —
+  is out of scope for Vitest and would need `@vscode/test-cli` plus
+  `@vscode/test-electron`.
+- `tests/grammar.test.ts` asserts that `syntaxes/*.tmLanguage.json`,
+  `src/markers.ts`, and `package.json`'s grammar contribution agree on markers,
+  aliases, and embedded scopes. This is the guard against the marker-list
+  duplication between `src/markers.ts` and `scripts/build-grammar.mjs`.
+- Tests are excluded from the packaged `.vsix` by `package.json`'s `files`
+  allowlist, and from `tsc --build` by `rootDir: ./src`.
 
 ## Architecture
 

@@ -1,7 +1,7 @@
 {
   "name": "vscode-syntax-highlight-comment",
   "displayName": "Syntax Highlight Comment",
-  "version": "2026.9.521",
+  "version": "2026.9.54",
   "description": "Enable syntax highlighting in template literals using comment markers like /** css */.",
   "categories": [
     "Programming Languages"
@@ -47,6 +47,7 @@
     "lint": "oxlint --fix-dangerously .",
     "prepackage": "npm run build",
     "package": "vsce package",
+    "test": "vitest run",
     "publish": "npm run package &&vsce publish patch"
   },
   "devDependencies": {
