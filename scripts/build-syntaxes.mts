@@ -25,7 +25,7 @@ const templates = SUPPORTED_MARKERS.map((marker) => {
 
   if (!includeScope) {
     throw new Error(
-      `No TextMate include scope for marker "${marker}". Add it to INCLUDE_SCOPES in scripts/build-grammar.mjs.`,
+      `No TextMate include scope for marker "${marker}". Add it to INCLUDE_SCOPES in scripts/build-syntaxes.mts.`,
     );
   }
 

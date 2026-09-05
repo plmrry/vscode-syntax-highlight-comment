@@ -28,7 +28,7 @@ jobs:
         run: npm install
 
       - name: Publish
-        run: npm run package -- --no-git-tag-version
+        run: npm run publish-extension -- --no-git-tag-version
         env:
           VSCE_PAT: ${{ secrets.VS_MARKETPLACE_TOKEN }}
 

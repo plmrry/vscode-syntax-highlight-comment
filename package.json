@@ -29,7 +29,7 @@
     "README.md",
     "icon.png",
     "package.json",
-    "src",
+    "src/**/!(*.test).ts",
     "syntaxes",
     "ts-out"
   ],
@@ -37,7 +37,7 @@
   "main": "./ts-out/extension.js",
   "types": "./ts-out/extension.d.ts",
   "scripts": {
-    "build-grammar": "node ./scripts/build-grammar.mjs",
+    "build-grammar": "node ./scripts/build-syntaxes.mts",
     "format": "oxfmt --write .",
     "lint": "oxlint --fix-dangerously .",
     "check": "npm run format && npm run lint",
@@ -47,7 +47,7 @@
     "build": "tsc --build",
     "prepackage": "npm run build",
     "package": "vsce package",
-    "postpackage": "vsce publish patch"
+    "publish-extension": "npm run package && vsce publish patch"
   },
   "devDependencies": {
     "@types/node": "26",
@@ -113,7 +113,6 @@
   "packageManager": "npm@11.9.0",
   "pricing": "Free",
   "vsce": {
-    "out": "vsix-file",
     "githubBranch": "main"
   }
 }

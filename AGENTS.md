@@ -21,19 +21,20 @@ Use `npm`. If blocked by strict package-manager checks, use `COREPACK_ENABLE_STR
 - `npm run format` — Format with oxfmt
 - `npm run lint` — Lint with oxlint and apply safe fixes
 - `npm run check` — Format and lint
-- `npm run compile` — Format/lint + compile TypeScript (runs check as precompile hook, then `tsgo --build`)
-- `npm run build` — Full build (compile + generate grammar)
-- `node ./scripts/build-grammar.mjs` — Regenerate grammar JSON from source script
+- `npm run typecheck` — Type-check source and tests without emitting
+- `npm run build` — Generate grammar, format/lint, type-check, run tests, and compile TypeScript
+- `npm run build-grammar` — Regenerate grammar JSON using `scripts/build-syntaxes.mts`
 - `npm run package` — Build + package `.vsix` with vsce
+- `npm run publish-extension` — Build/package, bump the patch version, and publish to the Marketplace
 - `npm test` — Run the Vitest unit suite
 
 ## Tests
 
-Vitest unit tests live in `tests/`. `npm test` runs them; `npx vitest` watches.
+Vitest unit tests live alongside source files in `src/` and `scripts/`. `npm test` runs them; `npx vitest` watches.
 
 - The `vscode` module is injected by the extension host at runtime and does not
   exist on npm, so it cannot be imported in a plain Node process.
-  `vitest.config.ts` aliases `vscode` to `tests/vscode-stub.ts`, a minimal
+  `vitest.config.ts` aliases `vscode` to `test-support/vscode-stub.ts`, a minimal
   runtime stand-in for the classes `src/` actually constructs (`Position`,
   `Range`, `Diagnostic`, `DiagnosticSeverity`, `CodeAction`, `CodeActionKind`,
   `WorkspaceEdit`). Extend the stub when `src/` starts using a new `vscode`
@@ -43,12 +44,12 @@ Vitest unit tests live in `tests/`. `npm test` runs them; `npx vitest` watches.
   editor — actual TextMate tokenization, real VS Code APIs, on-screen colors —
   is out of scope for Vitest and would need `@vscode/test-cli` plus
   `@vscode/test-electron`.
-- `tests/grammar.test.ts` asserts that `syntaxes/*.tmLanguage.json`,
+- `scripts/build-syntaxes.test.ts` asserts that `syntaxes/*.tmLanguage.json`,
   `src/markers.ts`, and `package.json`'s grammar contribution agree on markers,
-  aliases, and embedded scopes. This is the guard against the marker-list
-  duplication between `src/markers.ts` and `scripts/build-grammar.mjs`.
+  aliases, and embedded scopes. The generator imports markers and aliases
+  directly from `src/markers.ts`.
 - Tests are excluded from the packaged `.vsix` by `package.json`'s `files`
-  allowlist, and from `tsc --build` by tsconfig's `include: ["src/**/*.ts"]`.
+  allowlist, and from `tsc --build` by tsconfig's `exclude: ["src/**/*.test.ts"]`.
   Do not widen `rootDir` to pull tests into the program — that relocates all
   output to `ts-out/src/`, which silently breaks `main: ./ts-out/extension.js`.
 
@@ -56,7 +57,7 @@ Vitest unit tests live in `tests/`. `npm test` runs them; `npx vitest` watches.
 
 The extension has three main parts:
 
-- **Grammar injection** — A TextMate grammar (`syntaxes/syntax-highlight-comment.tmLanguage.json`) injected into JS/TS scopes. This file is **generated** — never edit it directly. The source of truth is `scripts/build-grammar.mjs`, which programmatically builds regex patterns for each supported language (css, html, shell) and outputs the JSON.
+- **Grammar injection** — A TextMate grammar (`syntaxes/syntax-highlight-comment.tmLanguage.json`) injected into JS/TS scopes. This file is **generated** — never edit it directly. The source of truth is `scripts/build-syntaxes.mts`, which programmatically builds regex patterns for each supported language and outputs the JSON.
 
 - **Diagnostics & code actions** (`src/diagnostics.ts`) — Scans documents for marker comments before template literals. Warns when a marker is unsupported and offers quick-fix replacements.
 
@@ -69,7 +70,7 @@ Entry point is `src/extension.ts`. Compiled output goes to `ts-out/`.
 - ESM modules (`type: "module"` in package.json). Use `node:`-prefixed built-in imports.
 - TypeScript strict mode is off.
 - Keep edits minimal and focused on the requested behavior.
-- When grammar behavior changes, update `scripts/build-grammar.mjs` and regenerate.
+- When grammar behavior changes, update `scripts/build-syntaxes.mts` and regenerate.
 - Keep diagnostics and marker aliases in sync when adding/removing marker types.
 - Update `CHANGELOG.md` for user-visible behavior changes.
 - Update this file, `AGENTS.md`, when adding new guidance for coding agents.

@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Fix local VSIX packaging after the grammar generator rename, exclude tests from the package, and move Marketplace publishing to `npm run publish-extension`.
 - Remove the experimental semantic token fallback (`src/regions.ts`, `src/semantic-tokens.ts`, `src/tokenizers.ts`) and the `syntaxHighlightComment.semanticTokens.enable` setting. Highlighting is TextMate grammar injection only.
 - Document that `editor.experimental.preferTreeSitter` is not supported: with it enabled for a targeted language, VS Code ignores injected TextMate grammars and marked template literals go unhighlighted.
 - Remove the bundled TypeScript language service plugin. VS Code's semantic token legend contains no string or template-string type, and its provider discards every non-identifier classification before it reaches the editor, so TypeScript was never painting over the injected grammar. The plugin only stripped semantic coloring from interpolated expressions, and could not load at all under TypeScript 7. See `ts-plugin-not-needed.md`.

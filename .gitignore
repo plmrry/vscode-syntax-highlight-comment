@@ -2,6 +2,7 @@ node_modules
 dist
 *.vsix
 .DS_Store
+.claude/
 ts-out
 *.tsbuildinfo
 pnpm-lock.yaml
