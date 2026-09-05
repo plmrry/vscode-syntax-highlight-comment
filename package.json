@@ -1,7 +1,7 @@
 {
   "name": "vscode-syntax-highlight-comment",
   "displayName": "Syntax Highlight Comment",
-  "version": "2026.9.8",
+  "version": "2026.9.11",
   "description": "Enable syntax highlighting in template literals using comment markers like /** css */.",
   "categories": [
     "Programming Languages"
@@ -28,7 +28,6 @@
     "LICENSE.md",
     "README.md",
     "icon.png",
-    "node_modules/internal-ts-plugin",
     "src",
     "package.json",
     "syntaxes",
@@ -50,9 +49,6 @@
     "package": "vsce package",
     "prepublish": "npm run package",
     "publish": "vsce publish patch"
-  },
-  "dependencies": {
-    "internal-ts-plugin": "file:internal-ts-plugin"
   },
   "devDependencies": {
     "@types/node": "26",
@@ -100,12 +96,6 @@
           "meta.embedded.block.syntax-highlight-comment.shell": "other",
           "meta.embedded.block.syntax-highlight-comment.svg": "other"
         }
-      }
-    ],
-    "typescriptServerPlugins": [
-      {
-        "name": "internal-ts-plugin",
-        "enableForWorkspaceTypeScriptVersions": true
       }
     ]
   },

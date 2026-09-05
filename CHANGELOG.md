@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Re-add the bundled TypeScript language service plugin (`vscode-syntax-highlight-comment-ts-plugin`), which suppresses semantic classification inside marked template literals so the injected grammar's highlighting isn't painted over. It's now wired up as a real `file:` dependency (resolved by `npm install` via `install-links=true` in `.npmrc`) instead of a hand-rolled `postinstall`/`prebuild` copy script.
+- Remove the bundled TypeScript language service plugin. VS Code's semantic token legend contains no string or template-string type, and its provider discards every non-identifier classification before it reaches the editor, so TypeScript was never painting over the injected grammar. The plugin only stripped semantic coloring from interpolated expressions, and could not load at all under TypeScript 7. See `ts-plugin-not-needed.md`.
 
 ## 2026.9.3
 
