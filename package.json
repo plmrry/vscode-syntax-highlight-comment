@@ -1,7 +1,7 @@
 {
   "name": "vscode-syntax-highlight-comment",
   "displayName": "Syntax Highlight Comment",
-  "version": "2026.9.5999",
+  "version": "2026.9.599991",
   "description": "Enable syntax highlighting in template literals using comment markers like /** css */.",
   "categories": [
     "Programming Languages"
@@ -38,17 +38,16 @@
   "types": "./ts-out/extension.d.ts",
   "scripts": {
     "build-grammar": "node ./scripts/build-grammar.mjs",
-    "prebuild": "npm run build-grammar && npm run check && npm run typecheck && npm test",
-    "build": "npm run compile",
-    "check": "npm run format && npm run lint",
-    "compile": "tsc --build",
-    "typecheck": "tsc --noEmit",
     "format": "oxfmt --write .",
     "lint": "oxlint --fix-dangerously .",
-    "prepackage": "npm run build",
-    "package": "vsce package",
+    "check": "npm run format && npm run lint",
+    "typecheck": "tsc -p tsconfig.typecheck.json",
     "test": "vitest run",
-    "publish-plugin": "npm run package && vsce publish patch"
+    "prebuild": "npm run build-grammar && npm run check && npm run typecheck && npm test",
+    "build": "tsc --build",
+    "postbuild": "npm run package",
+    "package": "vsce package",
+    "postpackage": "vsce publish patch"
   },
   "devDependencies": {
     "@types/node": "26",
